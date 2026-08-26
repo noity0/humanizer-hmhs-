@@ -1,0 +1,6 @@
+{
+  "name": "Humanizer AI Studio",
+  "description": "Transform AI-generated text into authentic human writing, analyze AI metrics, and generate customizable handwritten note files.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
