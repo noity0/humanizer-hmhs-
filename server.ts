@@ -227,30 +227,26 @@ function localAnalyzeFallback(text: string) {
 }
 
 const CANDIDATE_MODELS = [
-  "gemini-2.5-flash",
   "gemini-3.7-flash",
   "gemini-3.6-flash",
   "gemini-2.0-flash",
-  "gemini-3.1-pro-preview",
+  "gemini-2.5-flash",
 ];
 
 async function generateContentWithFallback(configOptions: any): Promise<string> {
   let lastError: any = null;
   for (const model of CANDIDATE_MODELS) {
-    for (let attempt = 1; attempt <= 2; attempt++) {
-      try {
-        const response = await ai.models.generateContent({
-          ...configOptions,
-          model,
-        });
-        if (response.text) {
-          return response.text;
-        }
-      } catch (err: any) {
-        lastError = err;
-        console.warn(`Attempt ${attempt} on model '${model}' failed:`, err?.message || err);
-        await new Promise((resolve) => setTimeout(resolve, attempt * 500));
+    try {
+      const response = await ai.models.generateContent({
+        ...configOptions,
+        model,
+      });
+      if (response.text) {
+        return response.text;
       }
+    } catch (err: any) {
+      lastError = err;
+      // Quiet fallback without logging noisy warnings to stderr
     }
   }
   throw lastError || new Error("All AI models are currently busy.");
