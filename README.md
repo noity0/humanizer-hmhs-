@@ -1,68 +1,137 @@
-# ✍️ Humanizer AI Studio
+# Humanizer AI Studio
 
-> Transform AI-generated text into more natural, authentic writing — with AI analysis and customizable handwritten-note generation.
+[![GitHub stars](https://img.shields.io/github/stars/noity0/humanizer-hmhs-?style=flat-square)](https://github.com/noity0/humanizer-hmhs-/stargazers)
+[![GitHub issues](https://img.shields.io/github/issues/noity0/humanizer-hmhs-?style=flat-square)](https://github.com/noity0/humanizer-hmhs-/issues)
+[![Last commit](https://img.shields.io/github/last-commit/noity0/humanizer-hmhs-?style=flat-square)](https://github.com/noity0/humanizer-hmhs-/commits/main)
 
-[![AI](https://img.shields.io/badge/AI-Gemini-blue)](https://ai.google.dev/) [![React](https://img.shields.io/badge/React-19-61dafb)](https://react.dev/) [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178c6)](https://www.typescriptlang.org/) [![Vite](https://img.shields.io/badge/Vite-6-646cff)](https://vitejs.dev/)
+> An AI-assisted writing workspace for revising drafts, reviewing writing characteristics, and creating customizable handwritten-note exports.
 
-## 🚀 What is Humanizer AI Studio?
+Humanizer AI Studio is an HMHS project built with React, TypeScript, Vite, and an Express server. It connects to Google's Gemini API through the server-side `@google/genai` SDK.
 
-Humanizer AI Studio is an HMHS project for improving AI-assisted writing. It combines a modern React interface with a server-side Gemini integration to transform generated text, analyze writing/AI metrics, and create customizable handwritten-note files.
+## Features
 
-### ✨ Highlights
+- AI-assisted rewriting for clearer, more natural-sounding drafts.
+- Writing analysis and feedback workflows.
+- Customizable handwritten-note generation.
+- Export support using the installed PDF-generation library.
+- Responsive React interface with Tailwind CSS and Motion.
+- Server-side API integration for Gemini requests.
 
-- 🤖 AI-assisted text humanization
-- 📊 Writing and AI-metric analysis
-- 📝 Customizable handwritten-note generation
-- ⚡ Fast React + Vite interface
-- 🔐 Server-side AI integration architecture
-- 📱 Responsive workflow for everyday writing
+The application is a writing aid. It does not guarantee that text will bypass AI detectors, plagiarism checks, or any other evaluation system. Review and fact-check generated content before using it.
 
-## 🧠 How it works
+## Technology
 
-```text
-Text Input → AI Processing → Humanized Draft → Analysis → Export
-```
+- React 19
+- TypeScript 5
+- Vite 6
+- Node.js and Express
+- Google Gemini through `@google/genai`
+- Tailwind CSS 4, Motion, and Lucide React
+- jsPDF
 
-The goal is not to make unverifiable claims about bypassing detection systems. The project focuses on producing clearer, more natural, reader-friendly writing.
+## Requirements
 
-## 🛠️ Tech Stack
+- Node.js 22 LTS recommended
+- npm
+- A Google Gemini API key for AI-powered features
 
-- React 19 + TypeScript
-- Vite
-- Express + Node.js
-- Google Gemini via `@google/genai`
-- Tailwind CSS
-- Motion
-- Lucide React
-
-## 🚀 Run locally
+Check your installed versions:
 
 ```bash
+node --version
+npm --version
+```
+
+## Setup on Windows
+
+Open PowerShell in the folder where you want the project:
+
+```powershell
+git clone https://github.com/noity0/humanizer-hmhs-.git
+Set-Location humanizer-hmhs-
 npm install
+```
+
+Create your local environment file:
+
+```powershell
+Copy-Item .env.example .env
+notepad .env
+```
+
+Set your own key in `.env`:
+
+```dotenv
+GEMINI_API_KEY=your_gemini_api_key
+APP_URL=http://localhost:3000
+```
+
+Keep the key private. Do not commit `.env`, paste credentials into issues, or expose them in screenshots.
+
+## Run the application
+
+Start the development server:
+
+```powershell
 npm run dev
 ```
 
-Production build:
+Open the local address printed by the server in your terminal.
 
-```bash
+Create a production build:
+
+```powershell
 npm run build
 npm start
 ```
 
-Configure your Gemini credentials using the project's `.env.example`. Never commit API keys or other secrets.
+## Available scripts
 
-## 🔎 Discoverability
+| Command | Purpose |
+| --- | --- |
+| `npm run dev` | Start the Express/TypeScript development server |
+| `npm run build` | Build the Vite frontend and bundle the server |
+| `npm start` | Start the built server |
+| `npm run preview` | Preview the Vite frontend build |
+| `npm run lint` | Run TypeScript checks without emitting files |
 
-Topics and search terms relevant to this project:
+## Environment configuration
 
-`ai-humanizer` `humanizer-ai` `ai-writing` `writing-assistant` `ai-editor` `gemini-ai` `gemini-api` `generative-ai` `react` `typescript` `vite` `express` `tailwindcss` `ai-tools` `productivity` `writing-tools` `hmhs`
+| Variable | Purpose |
+| --- | --- |
+| `GEMINI_API_KEY` | API key used by the server for Gemini requests |
+| `APP_URL` | Application base URL; use the deployed URL in hosted environments |
 
-If this project is useful, **⭐ star the repository**, share the project with people interested in AI writing tools, and open constructive issues or pull requests. Genuine engagement helps open-source projects grow.
+Use the supplied `.env.example` as the configuration reference. Actual deployment requirements depend on the hosting environment.
 
-## 👤 Author
+## Project layout
 
-**Hafiz Mohammed Huzaifa Shamim (HMHS)** — HMHS AI projects and experiments.
+```text
+humanizer-hmhs-/
+├── src/                 # React application
+├── server.ts            # Express server and API entry point
+├── index.html           # Vite HTML entry
+├── package.json         # Dependencies and scripts
+├── bun.lock             # Bun dependency lockfile
+├── .env.example         # Environment variable template
+└── vite.config.ts       # Vite configuration
+```
 
-## 📄 License
+## Privacy and responsible use
 
-See the repository license for usage terms.
+Do not submit confidential, personal, or sensitive text unless you understand the service and data-handling terms of the configured AI provider. Generated text can contain errors or invented details; verify names, facts, citations, and claims.
+
+## Contributing
+
+Bug reports, documentation improvements, and focused pull requests are welcome. Include reproduction steps and note which commands you ran.
+
+- [Issues](https://github.com/noity0/humanizer-hmhs-/issues)
+- [Source code](https://github.com/noity0/humanizer-hmhs-)
+
+## License
+
+Check the repository for a `LICENSE` file and follow its terms. If no license is present, reuse and redistribution are not automatically permitted.
+
+## Search terms
+
+AI humanizer, AI writing assistant, text rewriting, writing analysis, Gemini API, React writing app, TypeScript, Vite, Express, PDF export, HMHS.
